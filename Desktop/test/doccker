@@ -1,0 +1,17 @@
+# Use a lightweight Python image as the base
+FROM python:3.9-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the code into the container
+COPY . .
+
+# Install the required packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Map a volume to store the CSV file
+VOLUME /data
+
+# Set the default command to run the microservice
+CMD ["python", "app.py"]

@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Cloning repository") {
+            steps {
+                git url: "https://github.com/salahwiko/testmicrochatGPT"
+            }
+        }
+        stage("Building Docker image") {
+            steps {
+                sh "docker build -t doccker ."
+            }
+        }
+        stage("Running unit tests") {
+            steps {
+                sh "python -m unittest discover tests"
+            }
+        }
+        stage("Pushing Docker image to registry") {
+            steps {
+                sh "docker push doccker"
+            }
+        }
+        stage('build ython') {
+            steps{
+                sh 'python-m venv env'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+    }
+}
