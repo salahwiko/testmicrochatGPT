@@ -8,7 +8,7 @@ import requests
 
 # Define the API endpoint and access key
 endpoint = "https://api.openai.com/v1/engines/text-davinci-002/jobs"
-access_key = "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"
+access_key = "APIOPEN AI-KEY"
 
 # Function to query the API
 def query_chatgpt(question):
